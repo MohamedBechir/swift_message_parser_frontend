@@ -1,0 +1,67 @@
+/**
+ *
+ * Header
+ *
+ */
+
+import { Col, Nav, Navbar, Row } from 'react-bootstrap';
+import * as IconNameFa from 'react-icons/fa';
+import * as IconNameBs from 'react-icons/bs';
+import * as IconNameBi from 'react-icons/bi';
+import * as IconNameRi from 'react-icons/ri';
+import * as IconNameIm from 'react-icons/im';
+
+export const Header = () => {
+  return (
+    <div>
+      <Row className="bg-dark">
+        <Navbar variant="light">
+          <Nav className="min-vw-100">
+            <Col className=" col-sm d-flex flex-row">
+              <Col>
+                <Nav.Link className="text-white" href="/home">
+                  SMP
+                </Nav.Link>
+              </Col>
+              <Col>
+                <Nav.Link className="text-white" href="/home">
+                  <IconNameFa.FaChartBar className="mr-2" />
+                  Dashboard
+                </Nav.Link>
+              </Col>
+            </Col>
+            <Col className="d-flex col-sm mr-5">
+              <Col className="d-flex justify-content-center mr-5">
+                <Nav.Link className="text-white" href="/home">
+                  <IconNameBs.BsSearch className="mr-2" />
+                  Swift Messages
+                </Nav.Link>
+              </Col>
+            </Col>
+            <Col className="d-flex flex-row col-sm">
+              <Col>
+                <Nav.Link className="text-white" href="/home">
+                  <IconNameBi.BiMessageRounded className="mr-2" />
+                  Send Messages
+                </Nav.Link>
+              </Col>
+              <Col>
+                <Nav.Link className="text-white" href="/home">
+                  <IconNameIm.ImFilesEmpty className="mr-2" />
+                  Received Files
+                </Nav.Link>
+              </Col>
+              <Col>
+                <Nav.Link className="text-white" href="/home">
+                  <IconNameRi.RiInformationLine className="mr-2" />
+                  About Us
+                </Nav.Link>
+              </Col>
+            </Col>
+          </Nav>
+        </Navbar>
+      </Row>
+      <Row className="bg-light"></Row>
+    </div>
+  );
+};
