@@ -1,6 +1,6 @@
 /**
  *
- * Header
+ * Custome Navbar
  *
  */
 
@@ -11,7 +11,7 @@ import * as IconNameBi from 'react-icons/bi';
 import * as IconNameRi from 'react-icons/ri';
 import * as IconNameIm from 'react-icons/im';
 
-export const Header = () => {
+export const CustomNavbar = () => {
   return (
     <div>
       <Row className="bg-dark">
