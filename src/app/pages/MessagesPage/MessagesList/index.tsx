@@ -9,13 +9,14 @@ const features = ['Reference', 'SenderBIC', 'ReceiverBIC', 'Type', 'CreatedAt'];
 
 export const MessagesList = memo(() => {
   return (
-    <Table className="w-75 " striped bordered hover>
+    <Table className="w-75 mt-5" striped bordered hover>
       <thead>
         <tr
           style={{
-            backgroundColor: '#707070',
-            color: '#E5E5E5',
-            fontFamily: 'Lato',
+            backgroundColor: '#000000',
+            color: '#FFFFF',
+            fontFamily: 'Arial',
+            textAlign: 'center',
           }}
         >
           {features.map(feature => (
@@ -24,6 +25,34 @@ export const MessagesList = memo(() => {
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
         <tr>
           <td></td>
           <td></td>

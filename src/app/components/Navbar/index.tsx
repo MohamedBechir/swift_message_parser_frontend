@@ -14,14 +14,12 @@ import * as IconNameIm from 'react-icons/im';
 export const CustomNavbar = () => {
   return (
     <div>
-      <Row className="bg-dark">
-        <Navbar variant="light">
+      <Row className="bg-dark mb-5">
+        <Navbar style={{ backgroundColor: '#000000' }}>
           <Nav className="min-vw-100">
             <Col className=" col-sm d-flex flex-row">
               <Col>
-                <Nav.Link className="text-white" href="/home">
-                  SMP
-                </Nav.Link>
+                <Nav.Link className="text-white font-weight-bold">SMP</Nav.Link>
               </Col>
               <Col>
                 <Nav.Link className="text-white" href="/home">

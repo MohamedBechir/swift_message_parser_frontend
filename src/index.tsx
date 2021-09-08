@@ -25,6 +25,7 @@ import reportWebVitals from 'reportWebVitals';
 
 // Initialize languages
 import './locales/i18n';
+import { GlobalStyle } from 'styles/global-styles';
 
 const store = configureAppStore();
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
@@ -33,6 +34,7 @@ ReactDOM.render(
   <Provider store={store}>
     <HelmetProvider>
       <React.StrictMode>
+        <GlobalStyle />
         <App />
       </React.StrictMode>
     </HelmetProvider>
