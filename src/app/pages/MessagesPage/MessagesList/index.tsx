@@ -5,6 +5,7 @@
 import { memo } from 'react';
 import { Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { useFetchMessagesSlice } from './slice';
 import { selectState } from './slice/selectors';
 
@@ -22,7 +23,7 @@ export const MessagesList = memo(() => {
         <tr
           style={{
             backgroundColor: '#000000',
-            color: '#FFFFF',
+            color: '#E5E5E5',
             fontFamily: 'Arial',
             textAlign: 'center',
           }}
@@ -35,14 +36,25 @@ export const MessagesList = memo(() => {
       <tbody>
         {messages.messages.map(message => (
           <tr>
-            <td>{message.id}</td>
-            <td>{message.senderBIC}</td>
-            <td>{message.receiverBIC}</td>
-            <td>{message.messageType}</td>
-            <td>{new Date(message.createdAt).toLocaleDateString()}</td>
+            <td style={{ color: '#007bff', textAlign: 'center' }}>
+              {message.id}
+            </td>
+            <CustomeTd>{message.senderBIC}</CustomeTd>
+            <CustomeTd>{message.receiverBIC}</CustomeTd>
+            <CustomeTd>{message.messageType}</CustomeTd>
+            <CustomeTd>
+              {new Date(message.createdAt).toLocaleDateString()}
+            </CustomeTd>
           </tr>
         ))}
       </tbody>
     </Table>
   );
 });
+
+const CustomeTd = styled.td`
+  text-align: center;
+  color: #707070;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+`;
