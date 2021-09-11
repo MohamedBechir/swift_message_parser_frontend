@@ -25,4 +25,30 @@ export const GlobalStyle = createGlobalStyle`
     font-family: inherit;
     font-size: inherit;
   }
+  
+  .paginationItemStyle {
+	margin-left: 5px;
+	.page-link {
+		color: #fff
+	}
+	&.page-item {
+		&.active {
+			button {
+				background-color: green;
+				border-color: green;
+			}
+		}
+	}
+}
+
+.paginationLinkStyle {
+	background-color: #b90000;
+	border-radius: 5px;
+	&:hover {
+		background-color: #772e2e;
+	}
+	&:active {
+		background-color: #772e2e;
+	}
+}
 `;

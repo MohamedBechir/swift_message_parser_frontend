@@ -1,4 +1,4 @@
-import { MessageState } from 'app/pages/message/slice/types';
+import { MessageState } from 'app/pages/messagePage/message/slice/types';
 
 export interface MessagesState {
   messages: MessageState[];

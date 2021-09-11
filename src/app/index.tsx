@@ -13,6 +13,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { MessagesPage } from './pages/MessagesPage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
+import { MessagePage } from './pages/messagePage';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -42,6 +43,7 @@ export function App() {
 
         <Switch>
           <Route exact path="/" component={MessagesPage} />
+          <Route exact path="/message" component={MessagePage} />
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>

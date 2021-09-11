@@ -36,7 +36,7 @@ export const MessagesList = memo(() => {
       <tbody>
         {messages.messages.map(message => (
           <tr>
-            <td style={{ color: '#007bff', textAlign: 'center' }}>
+            <td style={{ color: '#F49D37', textAlign: 'center' }}>
               {message.id}
             </td>
             <CustomeTd>{message.senderBIC}</CustomeTd>
