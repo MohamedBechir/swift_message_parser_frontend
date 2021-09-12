@@ -5,11 +5,14 @@
 import { Footer } from 'app/components/Footer';
 import { CustomNavbar } from 'app/components/Navbar';
 import { Col, Row } from 'react-bootstrap';
+import { useParams } from 'react-router';
 import styled from 'styled-components';
 import { Message } from './message';
 import { MessageDetails } from './message/slice';
 
 export function MessagePage() {
+  let { id } = useParams<{ id: string }>();
+  console.log(id);
   return (
     <>
       <div>

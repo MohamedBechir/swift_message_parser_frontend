@@ -5,6 +5,7 @@
 import { memo } from 'react';
 import { Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useFetchMessagesSlice } from './slice';
 import { selectState } from './slice/selectors';
@@ -36,9 +37,11 @@ export const MessagesList = memo(() => {
       <tbody>
         {messages.messages.map(message => (
           <tr>
-            <td style={{ color: '#F49D37', textAlign: 'center' }}>
-              {message.id}
-            </td>
+            <Link to={`/messages/${message.id}`}>
+              <td style={{ color: '#F49D37', textAlign: 'center' }}>
+                {message.id}
+              </td>
+            </Link>
             <CustomeTd>{message.senderBIC}</CustomeTd>
             <CustomeTd>{message.receiverBIC}</CustomeTd>
             <CustomeTd>{message.messageType}</CustomeTd>

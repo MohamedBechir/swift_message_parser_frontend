@@ -42,8 +42,8 @@ export function App() {
         </Helmet>
 
         <Switch>
-          <Route exact path="/" component={MessagesPage} />
-          <Route exact path="/message" component={MessagePage} />
+          <Route exact path="/messages" component={MessagesPage} />
+          <Route exact path="/messages/:id" component={MessagePage} />
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>
