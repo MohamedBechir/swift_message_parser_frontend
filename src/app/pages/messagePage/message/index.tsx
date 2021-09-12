@@ -1,11 +1,15 @@
 /**
- * Messages Table
+ * Whole Message Component
  */
 
 import { memo } from 'react';
 import { Form } from 'react-bootstrap';
 
-export const Message = memo(() => {
+interface props {
+  id: string;
+}
+
+export const Message = memo(({ id }: props) => {
   return (
     <>
       <Form.Group

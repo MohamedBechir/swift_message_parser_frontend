@@ -8,11 +8,16 @@ import { Col, Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
 import { Message } from './message';
-import { MessageDetails } from './message/slice';
+import { MessageDetails } from './messageDetaills/index';
 
 export function MessagePage() {
   let { id } = useParams<{ id: string }>();
-  console.log(id);
+  const titles = [
+    'Basic Header Block:',
+    'Application Header Block',
+    'User Header Block',
+    'Text Block',
+  ];
   return (
     <>
       <div>
@@ -20,29 +25,19 @@ export function MessagePage() {
       </div>
       <div className="row ml-5 mb-5 mr-5">
         <h3 style={{ color: '#F49D37' }}>SWIFT Message Preview:</h3>
-        <Message />
+        <Message id={id} />
       </div>
       <div className=" row ml-5 mb-4">
         <h3 style={{ color: '#F49D37' }}>SWIFT Message Details:</h3>
       </div>
       <div className="d-flex justify-content-center"></div>
       <Row className="ml-5 ">
-        <Col>
-          <CustomeH5>Basic Header Block:</CustomeH5>
-          <MessageDetails />
-        </Col>
-        <Col>
-          <CustomeH5>Application Header Block:</CustomeH5>
-          <MessageDetails />
-        </Col>
-        <Col>
-          <CustomeH5>User Header Block:</CustomeH5>
-          <MessageDetails />
-        </Col>
-        <Col>
-          <CustomeH5>Text Block:</CustomeH5>
-          <MessageDetails />
-        </Col>
+        {titles.map(title => (
+          <Col>
+            <CustomeH5>{title}</CustomeH5>
+            <MessageDetails id={id} />
+          </Col>
+        ))}
       </Row>
       <Footer />
     </>

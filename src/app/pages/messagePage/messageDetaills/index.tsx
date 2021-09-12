@@ -6,7 +6,11 @@ import { memo } from 'react';
 import { Table } from 'react-bootstrap';
 import styled from 'styled-components';
 
-export const MessageDetails = memo(() => {
+interface props {
+  id: string;
+}
+
+export const MessageDetails = memo(({ id }: props) => {
   const features = ['TAG', 'VALUE'];
   return (
     <>
