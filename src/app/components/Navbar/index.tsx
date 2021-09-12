@@ -30,7 +30,7 @@ export const CustomNavbar = () => {
             </Col>
             <Col className="d-flex col-sm mr-5">
               <Col className="d-flex justify-content-center mr-5">
-                <Nav.Link className="text-white" href="/home">
+                <Nav.Link className="text-white" href="/messages">
                   <IconNameBs.BsSearch className="mr-2" />
                   Swift Messages
                 </Nav.Link>

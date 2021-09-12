@@ -4,12 +4,20 @@
 
 import { memo } from 'react';
 import { Form } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { useFetchMessageSlice } from './slice';
+import { selectState } from './slice/selectors';
 
 interface props {
   id: string;
 }
 
 export const Message = memo(({ id }: props) => {
+  const { actions } = useFetchMessageSlice();
+  const dispatch = useDispatch();
+  dispatch(actions.requestFetchMessage({ id: id }));
+  const message = useSelector(selectState);
+  console.log(message);
   return (
     <>
       <Form.Group
@@ -18,7 +26,7 @@ export const Message = memo(({ id }: props) => {
       >
         <Form.Control
           as="textarea"
-          placeholder="{1:F01TESTAR00AXXX7607663781}{2:O1010824170510TESTAR00AXXX94149133901705101425N}{4::20:DG942_171206-004:28D:00001/00001:50H:/344110001637 TESTAR00AXXX Utrecht Netherlands :30:170502 :21:010735904 :32B:CNY14,00 :57A:CIBKCNBJ473 :59:/344110000361 CASH CUSTOMER I TESTAR00AXXX Utrecht Netherlands :70:/RFB/C767405OCP021001 :71A:SHA -} {5:{CHK:B3BF0D846AFD}}"
+          placeholder={message.message}
           className="mr-5"
           readOnly
         />

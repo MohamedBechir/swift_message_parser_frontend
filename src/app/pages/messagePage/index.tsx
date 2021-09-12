@@ -8,7 +8,7 @@ import { Col, Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
 import { Message } from './message';
-import { MessageDetails } from './messageDetaills/index';
+import { MessageDetails } from './messageDetails/index';
 
 export function MessagePage() {
   let { id } = useParams<{ id: string }>();
