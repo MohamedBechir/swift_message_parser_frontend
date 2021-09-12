@@ -37,11 +37,14 @@ export const MessagesList = memo(() => {
       <tbody>
         {messages.messages.map(message => (
           <tr>
-            <Link to={`/messages/${message.id}`}>
-              <td style={{ color: '#F49D37', textAlign: 'center' }}>
+            <td style={{ textAlign: 'center' }}>
+              <Link
+                style={{ color: '#F49D37', fontWeight: 'bold' }}
+                to={`/messages/${message.id}`}
+              >
                 {message.id}
-              </td>
-            </Link>
+              </Link>
+            </td>
             <CustomeTd>{message.senderBIC}</CustomeTd>
             <CustomeTd>{message.receiverBIC}</CustomeTd>
             <CustomeTd>{message.messageType}</CustomeTd>
