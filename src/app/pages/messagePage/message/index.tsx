@@ -17,7 +17,6 @@ export const Message = memo(({ id }: props) => {
   const dispatch = useDispatch();
   dispatch(actions.requestFetchMessage({ id: id }));
   const message = useSelector(selectState);
-  console.log(message);
   return (
     <>
       <Form.Group

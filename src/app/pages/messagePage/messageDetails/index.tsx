@@ -4,7 +4,10 @@
 
 import { memo } from 'react';
 import { Table } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { useFetchMessageDetailsSlice } from './slice';
+import { selectState } from './slice/selectors';
 
 interface props {
   id: string;
@@ -12,6 +15,11 @@ interface props {
 
 export const MessageDetails = memo(({ id }: props) => {
   const features = ['TAG', 'VALUE'];
+  const { actions } = useFetchMessageDetailsSlice();
+  const dispatch = useDispatch();
+  dispatch(actions.requestFetchMessageDetails({ id: id }));
+  const messageDetailed = useSelector(selectState);
+  console.log(messageDetailed);
   return (
     <>
       <Table className="w-75 mt-5" striped bordered hover>
