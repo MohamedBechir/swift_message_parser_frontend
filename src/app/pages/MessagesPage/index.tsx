@@ -7,31 +7,45 @@ import { CustomNavbar } from 'app/components/Navbar';
 import { MessagesList } from './MessagesList';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectState } from './MessagesList/slice/selectors';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFetchMessagesSlice } from './MessagesList/slice';
 import { PaginationComponent } from './Pagination';
 
 export function MessagesPage() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [messagesPerPage] = useState(1);
 
   const { actions } = useFetchMessagesSlice();
   const dispatch = useDispatch();
-  dispatch(actions.requestFetchMessages());
+  useEffect(() => {
+    dispatch(actions.requestFetchMessages({ page: '0', size: '1' }));
+  }, [actions, dispatch]);
   const messages = useSelector(selectState);
 
-  const indexOfLastPage = currentPage * messagesPerPage;
-  const indexOfFirstMessage = indexOfLastPage - messagesPerPage;
-  const currentMessages = messages.messages.slice(
-    indexOfFirstMessage,
-    indexOfLastPage,
-  );
-
-  const paginate = pageNumber => setCurrentPage(pageNumber);
-  const paginateLast = () =>
+  const paginate = pageNumber => {
+    setCurrentPage(pageNumber);
+    console.log(pageNumber);
+    dispatch(actions.requestFetchMessages({ page: pageNumber, size: '1' }));
+  };
+  /*
+  const paginateLast = () => {
     setCurrentPage(Math.ceil(messages.messages.length / messagesPerPage));
-  const paginateNext = () => setCurrentPage(currentPage + 1);
-  const paginatePrev = () => setCurrentPage(currentPage - 1);
+    dispatch(
+      actions.requestFetchMessages({ page: currentPage + 1 + '', size: '1' }),
+    );
+  }
+  const paginateNext = () => {
+    setCurrentPage(currentPage + 1);
+    dispatch(
+      actions.requestFetchMessages({ page: currentPage + 1 + '', size: '1' }),
+    );
+  };
+  const paginatePrev = () => {
+    setCurrentPage(currentPage - 1);
+    dispatch(
+      actions.requestFetchMessages({ page: currentPage - 1 + '', size: '1' }),
+    );
+  };*/
 
   return (
     <>
@@ -39,17 +53,10 @@ export function MessagesPage() {
         <CustomNavbar />
       </div>
       <div className="mt-5 d-flex justify-content-center">
-        <MessagesList messageList={currentMessages} />
+        <MessagesList messageList={messages.messages} />
       </div>
       <div className="mt-5 justify-content-center">
-        <PaginationComponent
-          messagesPerPage={messagesPerPage}
-          totaleMessages={messages.messages.length}
-          paginate={paginate}
-          paginateLast={paginateLast}
-          paginateNext={paginateNext}
-          paginatePrev={paginatePrev}
-        />
+        <PaginationComponent paginate={paginate} />
       </div>
       <Footer />
     </>

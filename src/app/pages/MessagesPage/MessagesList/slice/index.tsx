@@ -6,15 +6,26 @@ import { MessagesState } from './types';
 
 export const initialState: MessagesState = {
   messages: [],
+  page: '',
+  size: '',
 };
 
 const slice = createSlice({
   name: 'messages',
   initialState,
   reducers: {
-    requestFetchMessages(state) {},
+    requestFetchMessages(
+      state,
+      action: PayloadAction<{ page: string; size: string }>,
+    ) {
+      console.log('action: ' + action.payload.page);
+      state.page = action.payload.page;
+      state.size = action.payload.size;
+    },
     FetchMessagesSuccess(state, action: PayloadAction<any>) {
+      console.log(action.payload);
       state.messages = action.payload;
+      return state;
     },
   },
 });

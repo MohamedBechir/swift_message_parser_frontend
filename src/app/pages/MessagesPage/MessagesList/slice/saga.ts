@@ -5,7 +5,12 @@ import { fetchMessagesActions as actions } from '.';
 
 export function* fetchMessagesSaga(action) {
   try {
-    const messages = yield call(request.get, MESSAGE_ENDPOINTS.messages);
+    console.log('saga' + action.payload.page);
+    const messages = yield call(
+      request.get,
+      MESSAGE_ENDPOINTS.messages +
+        `?page=${action.payload.page}&size=${action.payload.size}`,
+    );
     yield put(actions.FetchMessagesSuccess(messages));
   } catch (error) {
     console.log(error);

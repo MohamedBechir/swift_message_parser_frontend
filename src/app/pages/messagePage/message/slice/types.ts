@@ -5,6 +5,9 @@ export interface MessageInfoState {
   receiverBIC: string;
   messageType: string;
   createdAt: string;
+  totalPages: string;
+  pageSize: string;
+  pageNumber: string;
 }
 
 export interface MessageState {
