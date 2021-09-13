@@ -12,8 +12,9 @@ import { useFetchMessagesSlice } from './MessagesList/slice';
 import { PaginationComponent } from './Pagination';
 
 export function MessagesPage() {
+  // Initialize current page and page's size
   const [currentPage, setCurrentPage] = useState(0);
-  const [messagesPerPage] = useState(1);
+  const [size] = useState(1);
 
   const { actions } = useFetchMessagesSlice();
   const dispatch = useDispatch();
@@ -27,13 +28,11 @@ export function MessagesPage() {
     console.log(pageNumber);
     dispatch(actions.requestFetchMessages({ page: pageNumber, size: '1' }));
   };
-  /*
+
   const paginateLast = () => {
-    setCurrentPage(Math.ceil(messages.messages.length / messagesPerPage));
-    dispatch(
-      actions.requestFetchMessages({ page: currentPage + 1 + '', size: '1' }),
-    );
-  }
+    setCurrentPage(1);
+    dispatch(actions.requestFetchMessages({ page: size - 1 + '', size: '1' }));
+  };
   const paginateNext = () => {
     setCurrentPage(currentPage + 1);
     dispatch(
@@ -45,7 +44,7 @@ export function MessagesPage() {
     dispatch(
       actions.requestFetchMessages({ page: currentPage - 1 + '', size: '1' }),
     );
-  };*/
+  };
 
   return (
     <>
@@ -56,7 +55,13 @@ export function MessagesPage() {
         <MessagesList messageList={messages.messages} />
       </div>
       <div className="mt-5 justify-content-center">
-        <PaginationComponent paginate={paginate} />
+        <PaginationComponent
+          size={size}
+          paginate={paginate}
+          paginatePrev={paginatePrev}
+          paginateNext={paginateNext}
+          paginateLast={paginateLast}
+        />
       </div>
       <Footer />
     </>
