@@ -5,10 +5,13 @@
 import { Footer } from 'app/components/Footer';
 import { CustomNavbar } from 'app/components/Navbar';
 import { Col, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
 import { Message } from './message';
 import { MessageDetails } from './messageDetails/index';
+import { useFetchMessageDetailsSlice } from './messageDetails/slice';
+import { selectState } from './messageDetails/slice/selectors';
 
 export function MessagePage() {
   let { id } = useParams<{ id: string }>();
@@ -18,6 +21,11 @@ export function MessagePage() {
     'User Header Block',
     'Text Block',
   ];
+  const { actions } = useFetchMessageDetailsSlice();
+  const dispatch = useDispatch();
+  dispatch(actions.requestFetchMessageDetails({ id: id }));
+  const messageDetailed = useSelector(selectState);
+  console.log(messageDetailed);
   return (
     <>
       <div>

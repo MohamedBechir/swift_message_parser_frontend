@@ -2,22 +2,18 @@
  * Messages Table
  */
 
+import { MessageInfoState } from 'app/pages/messagePage/message/slice/types';
 import { memo } from 'react';
 import { Table } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { useFetchMessagesSlice } from './slice';
-import { selectState } from './slice/selectors';
 
+interface props {
+  messageList: MessageInfoState[];
+}
 const features = ['Reference', 'SenderBIC', 'ReceiverBIC', 'Type', 'CreatedAt'];
 
-export const MessagesList = memo(() => {
-  const { actions } = useFetchMessagesSlice();
-  const dispatch = useDispatch();
-  dispatch(actions.requestFetchMessages());
-  const messages = useSelector(selectState);
-
+export const MessagesList = memo(({ messageList }: props) => {
   return (
     <Table className="w-75 mt-5" striped bordered hover>
       <thead>
@@ -35,7 +31,7 @@ export const MessagesList = memo(() => {
         </tr>
       </thead>
       <tbody>
-        {messages.messages.map(message => (
+        {messageList.map(message => (
           <tr>
             <td style={{ textAlign: 'center' }}>
               <Link

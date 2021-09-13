@@ -6,5 +6,5 @@ const selectSlice = (state: RootState) => state.messages || initialState;
 
 export const selectState = createSelector(
   [selectSlice],
-  MessageInfoState => MessageInfoState,
+  MessagesState => MessagesState,
 );

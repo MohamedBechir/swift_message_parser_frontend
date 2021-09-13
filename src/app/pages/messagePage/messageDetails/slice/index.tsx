@@ -6,6 +6,23 @@ import { MessageDetailsState } from './types';
 
 export const initialState: MessageDetailsState = {
   id: '',
+  block1: {
+    applicationId: '',
+    logicalTerminal: '',
+    sequenceNumber: '',
+    serviceID: '',
+    sessionNumber: '',
+  },
+  block2: {
+    input: '',
+    messagePriority: '',
+    messageType: '',
+    output: '',
+  },
+  tagBlock: {
+    blockNumber: '',
+    fields: [],
+  },
 };
 
 const slice = createSlice({
@@ -16,7 +33,10 @@ const slice = createSlice({
       state.id = action.payload.id;
     },
     FetchMessageDetailsSuccess(state, action: PayloadAction<any>) {
-      console.log(action.payload);
+      console.log(action.payload.tagBlock);
+      state.block1 = action.payload.block1;
+      state.block2 = action.payload.block2;
+      state.tagBlock = action.payload.tagBlock;
     },
   },
 });

@@ -1,4 +1,5 @@
 export interface MessageInfoState {
+  length: number | undefined;
   id: string;
   senderBIC: string;
   receiverBIC: string;
