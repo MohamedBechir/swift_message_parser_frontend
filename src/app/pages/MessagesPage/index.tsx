@@ -28,6 +28,10 @@ export function MessagesPage() {
   );
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
+  const paginateLast = () =>
+    setCurrentPage(Math.ceil(messages.messages.length / messagesPerPage));
+  const paginateNext = () => setCurrentPage(currentPage + 1);
+  const paginatePrev = () => setCurrentPage(currentPage - 1);
 
   return (
     <>
@@ -42,6 +46,9 @@ export function MessagesPage() {
           messagesPerPage={messagesPerPage}
           totaleMessages={messages.messages.length}
           paginate={paginate}
+          paginateLast={paginateLast}
+          paginateNext={paginateNext}
+          paginatePrev={paginatePrev}
         />
       </div>
       <Footer />

@@ -5,10 +5,20 @@ interface props {
   messagesPerPage: number;
   totaleMessages: number;
   paginate: any;
+  paginateLast: any;
+  paginateNext: any;
+  paginatePrev: any;
 }
 
 export const PaginationComponent = memo(
-  ({ messagesPerPage, totaleMessages, paginate }: props) => {
+  ({
+    messagesPerPage,
+    totaleMessages,
+    paginate,
+    paginateLast,
+    paginateNext,
+    paginatePrev,
+  }: props) => {
     const pageNumbers: number[] = [];
     for (
       let index = 1;
@@ -19,14 +29,18 @@ export const PaginationComponent = memo(
     }
     return (
       <Pagination className="justify-content-center" color="#F49D37">
-        <Pagination.Prev />
+        <Pagination.First onClick={() => paginate(1)}>1</Pagination.First>
+        <Pagination.Prev onClick={() => paginatePrev()} />
         {pageNumbers.map(number => (
           <Pagination.Item onClick={() => paginate(number)}>
             {number}
           </Pagination.Item>
         ))}
         <Pagination.Ellipsis />
-        <Pagination.Next />
+        <Pagination.Next onClick={() => paginateNext()}></Pagination.Next>
+        <Pagination.Last onClick={() => paginateLast(pageNumbers.length)}>
+          {pageNumbers.length}
+        </Pagination.Last>
       </Pagination>
     );
   },
