@@ -10,19 +10,20 @@ export const initialState: MessageDetailsState = {
     applicationId: '',
     logicalTerminal: '',
     sequenceNumber: '',
-    serviceID: '',
+    serviceId: '',
     sessionNumber: '',
   },
   block2: {
-    input: '',
+    messageDirection: '',
     messagePriority: '',
     messageType: '',
-    output: '',
   },
-  tagBlock: {
-    blockNumber: '',
-    fields: [],
-  },
+  tagBlock: [
+    {
+      blockNumber: '',
+      fields: [],
+    },
+  ],
 };
 
 const slice = createSlice({
@@ -33,10 +34,10 @@ const slice = createSlice({
       state.id = action.payload.id;
     },
     FetchMessageDetailsSuccess(state, action: PayloadAction<any>) {
-      console.log(action.payload.tagBlock);
       state.block1 = action.payload.block1;
       state.block2 = action.payload.block2;
       state.tagBlock = action.payload.tagBlock;
+      return state;
     },
   },
 });

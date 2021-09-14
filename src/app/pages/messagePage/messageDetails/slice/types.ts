@@ -2,22 +2,21 @@ export interface MessageDetailsState {
   id: string;
   block1: Block1;
   block2: Block2;
-  tagBlock: TagBlock;
+  tagBlock: TagBlock[];
 }
 
 export interface Block1 {
   applicationId: string;
+  serviceId: string;
   logicalTerminal: string;
-  sequenceNumber: string;
-  serviceID: string;
   sessionNumber: string;
+  sequenceNumber: string;
 }
 
 export interface Block2 {
   messagePriority: string;
   messageType: string;
-  input: string;
-  output: string;
+  messageDirection: string;
 }
 
 export interface TagBlock {

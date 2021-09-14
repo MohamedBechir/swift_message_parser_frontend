@@ -25,7 +25,6 @@ export function MessagesPage() {
 
   const paginate = pageNumber => {
     setCurrentPage(pageNumber);
-    console.log(pageNumber);
     dispatch(actions.requestFetchMessages({ page: pageNumber, size: '1' }));
   };
 

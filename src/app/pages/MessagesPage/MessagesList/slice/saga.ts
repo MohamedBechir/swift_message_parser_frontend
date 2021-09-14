@@ -5,7 +5,6 @@ import { fetchMessagesActions as actions } from '.';
 
 export function* fetchMessagesSaga(action) {
   try {
-    console.log('saga' + action.payload.page);
     const messages = yield call(
       request.get,
       MESSAGE_ENDPOINTS.messages +
