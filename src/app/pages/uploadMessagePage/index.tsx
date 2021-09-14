@@ -1,7 +1,7 @@
 import { Footer } from 'app/components/Footer';
 import { CustomNavbar } from 'app/components/Navbar';
 import { Form } from 'react-bootstrap';
-import Drop from './dropzone/index';
+import { MyDropzone } from './myDropzone';
 
 export const uploadMessageComponenet = () => {
   return (
@@ -23,8 +23,11 @@ export const uploadMessageComponenet = () => {
           <Form.Control placeholder="MT103.txt" className="mr-5" readOnly />
         </Form.Group>
       </div>
-      <Drop />
-      <h5 className="row ml-5 mt-3" style={{ fontWeight: 'lighter' }}>
+      <MyDropzone />
+      <h5
+        className="row ml-5 mt-3 text-center"
+        style={{ fontWeight: 'lighter' }}
+      >
         Accepted format: .txt*
       </h5>
       <Footer />
