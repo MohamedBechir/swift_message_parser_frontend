@@ -14,6 +14,7 @@ import { MessagesPage } from './pages/MessagesPage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
 import { MessagePage } from './pages/messagePage';
+import { uploadMessagePage } from './pages/uploadMessagePage/Loadable';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -44,6 +45,7 @@ export function App() {
         <Switch>
           <Route exact path="/messages" component={MessagesPage} />
           <Route exact path="/messages/:id" component={MessagePage} />
+          <Route exact path="/upload-file" component={uploadMessagePage} />
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>

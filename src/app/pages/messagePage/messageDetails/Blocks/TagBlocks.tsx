@@ -4,7 +4,7 @@
 import { memo } from 'react';
 import { Table } from 'react-bootstrap';
 import styled from 'styled-components';
-import { Field, TagBlock } from '../slice/types';
+import { Field } from '../slice/types';
 
 interface props {
   fields: Field[];

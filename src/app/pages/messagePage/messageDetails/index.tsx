@@ -2,7 +2,7 @@
  * Messages Details
  */
 import { memo, useEffect } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Block1Component } from './Blocks/Block1';
 import { Block2Component } from './Blocks/Block2';

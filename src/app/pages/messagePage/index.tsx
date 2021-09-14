@@ -4,7 +4,7 @@
 
 import { Footer } from 'app/components/Footer';
 import { CustomNavbar } from 'app/components/Navbar';
-import { Col, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Message } from './message';
 import { MessageDetails } from './messageDetails/index';
@@ -25,7 +25,7 @@ export function MessagePage() {
       </div>
       <div className="d-flex justify-content-center"></div>
       <Row className="ml-5 ">
-          <MessageDetails id={id} />
+        <MessageDetails id={id} />
       </Row>
       <Footer />
     </>

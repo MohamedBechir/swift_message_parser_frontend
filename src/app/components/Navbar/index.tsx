@@ -44,7 +44,7 @@ export const CustomNavbar = () => {
                 </Nav.Link>
               </Col>
               <Col>
-                <Nav.Link className="text-white" href="/home">
+                <Nav.Link className="text-white" href="/upload-file">
                   <IconNameIm.ImFilesEmpty className="mr-2" />
                   Received Files
                 </Nav.Link>
