@@ -13,9 +13,7 @@ const slice = createSlice({
   initialState,
   reducers: {
     requestUploadFile(state, action: PayloadAction<{ files: File }>) {},
-    uploadFileSuccess(state, action: PayloadAction<any>) {
-      console.log(action.payload);
-    },
+    uploadFileSuccess(state, action: PayloadAction<any>) {},
   },
 });
 

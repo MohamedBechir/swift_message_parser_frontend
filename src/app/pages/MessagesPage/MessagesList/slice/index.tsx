@@ -5,9 +5,10 @@ import { fetchMessagesRootState } from './saga';
 import { MessagesState } from './types';
 
 export const initialState: MessagesState = {
-  messages: [],
+  messageGeneralInfoModels: [],
   page: '',
   size: '',
+  totalPages: '',
 };
 
 const slice = createSlice({
@@ -22,7 +23,10 @@ const slice = createSlice({
       state.size = action.payload.size;
     },
     FetchMessagesSuccess(state, action: PayloadAction<any>) {
-      state.messages = action.payload;
+      state.messageGeneralInfoModels = action.payload.messageGeneralInfoModels;
+      state.size = action.payload.pageSize;
+      state.page = action.payload.pageNumber;
+      state.totalPages = action.payload.totalPages;
       return state;
     },
   },

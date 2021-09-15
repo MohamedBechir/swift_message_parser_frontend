@@ -13,35 +13,35 @@ import { PaginationComponent } from './Pagination';
 
 export function MessagesPage() {
   // Initialize current page and page's size
-  const [currentPage, setCurrentPage] = useState(0);
-  const [size] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const { actions } = useFetchMessagesSlice();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(actions.requestFetchMessages({ page: '0', size: '1' }));
+    dispatch(actions.requestFetchMessages({ page: '0', size: '2' }));
   }, [actions, dispatch]);
   const messages = useSelector(selectState);
+  const size = parseInt(messages.totalPages);
 
   const paginate = pageNumber => {
     setCurrentPage(pageNumber);
-    dispatch(actions.requestFetchMessages({ page: pageNumber, size: '1' }));
+    dispatch(actions.requestFetchMessages({ page: pageNumber, size: '2' }));
   };
 
   const paginateLast = () => {
     setCurrentPage(1);
-    dispatch(actions.requestFetchMessages({ page: size - 1 + '', size: '1' }));
+    dispatch(actions.requestFetchMessages({ page: size - 1 + '', size: '2' }));
   };
   const paginateNext = () => {
     setCurrentPage(currentPage + 1);
     dispatch(
-      actions.requestFetchMessages({ page: currentPage + 1 + '', size: '1' }),
+      actions.requestFetchMessages({ page: currentPage + 1 + '', size: '2' }),
     );
   };
   const paginatePrev = () => {
     setCurrentPage(currentPage - 1);
     dispatch(
-      actions.requestFetchMessages({ page: currentPage - 1 + '', size: '1' }),
+      actions.requestFetchMessages({ page: currentPage - 1 + '', size: '2' }),
     );
   };
 
@@ -51,7 +51,7 @@ export function MessagesPage() {
         <CustomNavbar />
       </div>
       <div className="mt-5 d-flex justify-content-center">
-        <MessagesList messageList={messages.messages} />
+        <MessagesList messageList={messages.messageGeneralInfoModels} />
       </div>
       <div className="mt-5 justify-content-center">
         <PaginationComponent
