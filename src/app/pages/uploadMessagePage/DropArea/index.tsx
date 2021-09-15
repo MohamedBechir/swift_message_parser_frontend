@@ -19,14 +19,17 @@ const rejectStyle = {
   borderColor: '#ff1744',
 };
 let style;
-export function MyDropzone() {
+
+interface props {
+  passFileName: any;
+}
+export function MyDropzone(props: props) {
   const {
     getRootProps,
     getInputProps,
     isDragActive,
     isDragAccept,
     isDragReject,
-    acceptedFiles,
   } = useDropzone({
     onDrop: onDrop,
   });
@@ -35,6 +38,7 @@ export function MyDropzone() {
 
   function onDrop(acceptedFiles) {
     acceptedFiles.forEach(file => {
+      props.passFileName(file.name);
       return dispatch(actions.requestUploadFile({ files: file }));
     });
   }
@@ -47,11 +51,6 @@ export function MyDropzone() {
     }),
     [isDragActive, isDragReject, isDragAccept],
   );
-  const fileName = acceptedFiles.map(file => (
-    <li key={file.name}>
-      {file.name} - {file.size} bytes
-    </li>
-  ));
 
   return (
     <>
@@ -74,10 +73,6 @@ export function MyDropzone() {
       >
         Accepted format: .txt*
       </h5>
-      <aside className="row ml-5 mt-4">
-        <h4>Files</h4>
-        <ul>{fileName}</ul>
-      </aside>
     </>
   );
 }

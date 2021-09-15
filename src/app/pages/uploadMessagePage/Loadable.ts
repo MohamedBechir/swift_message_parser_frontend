@@ -8,5 +8,5 @@ import { lazyLoad } from 'utils/loadable';
 
 export const uploadMessagePage = lazyLoad(
   () => import('.'),
-  module => module.uploadMessageComponenet,
+  module => module.UploadMessageComponenet,
 );

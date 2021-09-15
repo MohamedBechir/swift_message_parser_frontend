@@ -1,3 +1,3 @@
 export interface FileState {
-  fileName: string;
+  files: File[];
 }

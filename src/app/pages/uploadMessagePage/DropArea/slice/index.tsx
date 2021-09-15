@@ -5,17 +5,17 @@ import { uploadFileRootState } from './saga';
 import { FileState } from './types';
 
 export const initialState: FileState = {
-  fileName: '',
+  files: [],
 };
 
 const slice = createSlice({
   name: 'upload_file',
   initialState,
   reducers: {
-    requestUploadFile(state, action: PayloadAction<{ files: File }>) {
-      console.log(action.payload.files.name);
+    requestUploadFile(state, action: PayloadAction<{ files: File }>) {},
+    uploadFileSuccess(state, action: PayloadAction<any>) {
+      console.log(action.payload);
     },
-    uploadFileSuccess(state, action: PayloadAction<any>) {},
   },
 });
 

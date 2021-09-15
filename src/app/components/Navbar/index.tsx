@@ -46,7 +46,7 @@ export const CustomNavbar = () => {
               <Col>
                 <Nav.Link className="text-white" href="/upload-file">
                   <IconNameIm.ImFilesEmpty className="mr-2" />
-                  Received Files
+                  Upload Message
                 </Nav.Link>
               </Col>
               <Col>
