@@ -15,7 +15,9 @@ import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
 import { MessagePage } from './pages/messagePage';
 import { uploadMessagePage } from './pages/uploadMessagePage/Loadable';
-import { SendMessagePage } from './pages/sendMessagePage';
+import { SendMessage } from './pages/sendMessagePage/loadable';
+import { SendJsonMessagePage } from './pages/sendMessagePage/sendJsonMessage';
+import { SendxmlMessagePage } from './pages/sendMessagePage/sendXmlMessage';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -47,7 +49,18 @@ export function App() {
           <Route exact path="/messages" component={MessagesPage} />
           <Route exact path="/messages/:id" component={MessagePage} />
           <Route exact path="/upload-file" component={uploadMessagePage} />
-          <Route exact path="/send-message" component={SendMessagePage} />
+          <Route exact path="/send-message" component={SendMessage} />
+          <Route
+            exact
+            path="/send-message/json"
+            component={SendJsonMessagePage}
+          />
+          <Route
+            exact
+            path="/send-message/xml"
+            component={SendxmlMessagePage}
+          />
+
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>

@@ -10,4 +10,10 @@ export const FILE_ENDPOINTS = {
 
 export const JSONMESSAGE_ENDPOINTS = {
   json_messages: `http://localhost:8080/messages/tojson`,
+  send_json_message: `http://localhost:8080/messages/json/send`,
+};
+
+export const XMLMESSAGE_ENDPOINTS = {
+  xml_messages: `http://localhost:8080/messages/toxml`,
+  send_xml_message: `http://localhost:8080/messages/xml/send`,
 };
