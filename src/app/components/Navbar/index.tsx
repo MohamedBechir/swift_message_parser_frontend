@@ -38,7 +38,7 @@ export const CustomNavbar = () => {
             </Col>
             <Col className="d-flex flex-row col-sm">
               <Col>
-                <Nav.Link className="text-white" href="/home">
+                <Nav.Link className="text-white" href="/send-message">
                   <IconNameBi.BiMessageRounded className="mr-2" />
                   Send Messages
                 </Nav.Link>
