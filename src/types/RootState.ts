@@ -3,6 +3,7 @@
 import { MessageState } from 'app/pages/messagePage/message/slice/types';
 import { MessageDetailsState } from 'app/pages/messagePage/messageDetails/slice/types';
 import { MessagesState } from 'app/pages/MessagesPage/MessagesList/slice/types';
+import { JsonMessagesState } from 'app/pages/sendMessagePage/slice/types';
 import { FileState } from 'app/pages/uploadMessagePage/DropArea/slice/types';
 
 /* 
@@ -15,4 +16,5 @@ export interface RootState {
   message: MessageState;
   message_details: MessageDetailsState;
   upload_file: FileState;
+  json_messages: JsonMessagesState;
 }

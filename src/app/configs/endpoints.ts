@@ -7,3 +7,7 @@ export const MESSAGE_ENDPOINTS = {
 export const FILE_ENDPOINTS = {
   upload_file: `http://localhost:8080/messages`,
 };
+
+export const JSONMESSAGE_ENDPOINTS = {
+  json_messages: `http://localhost:8080/messages/tojson`,
+};
