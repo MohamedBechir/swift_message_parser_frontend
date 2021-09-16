@@ -3,6 +3,7 @@ export interface MessageDetailsState {
   block1: Block1;
   block2: Block2;
   tagBlock: TagBlock[];
+  messageId?: string;
 }
 
 export interface Block1 {

@@ -6,7 +6,7 @@
 
 import { lazyLoad } from 'utils/loadable';
 
-export const MessagesPage = lazyLoad(
+export const SendMessage = lazyLoad(
   () => import('./index'),
   module => module.SendMessagePage,
 );
