@@ -15,7 +15,7 @@ import '../sendXmlMessage/design.css';
 const customTheme = {
   tagColor: '#f92672',
   textColor: '#fd971f',
-  separatorColor: 'white',
+  separatorColor: 'black',
 };
 
 export function SendxmlMessagePage() {
