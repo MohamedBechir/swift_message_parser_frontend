@@ -1,0 +1,8 @@
+.bechir
+ {
+	white-space: pre;
+	cursor: text;
+    height: 400px;
+    overflow: auto;
+    background-color: #000;
+}
