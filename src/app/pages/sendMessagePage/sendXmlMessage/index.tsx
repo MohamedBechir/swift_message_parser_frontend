@@ -1,5 +1,5 @@
 /**
- * Send Message Page
+ * Send XML Message Page
  */
 
 import { Footer } from 'app/components/Footer';
@@ -39,9 +39,9 @@ export function SendxmlMessagePage() {
           {xmlMessages.XmlMessages.map(xmlMessage => (
             <>
               <h2 style={{ color: '#f49d37' }}>MT101: ID2002</h2>
-              <div className="shadow-lg p-3 ml-1 bg-white">
+              <div className="shadow-sm p-3 ml-1 bg-white rounded">
                 <XMLViewer
-                  className="bechir rounded mb-4 d-flex mt-3"
+                  className="bechir mt-3"
                   xml={xmlMessage}
                   theme={customTheme}
                 />

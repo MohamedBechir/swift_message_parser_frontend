@@ -1,5 +1,5 @@
 /**
- * Send Message Page
+ * Send JSON Message Page
  */
 
 import { Footer } from 'app/components/Footer';
@@ -35,11 +35,8 @@ export function SendJsonMessagePage() {
               <h2 style={{ color: '#f49d37' }}>
                 MT{jsonMessage.block2.messageType}: ID{jsonMessage?.messageId}
               </h2>
-              <div>
-                <JSONPretty
-                  className="shadow-lg p-3 ml-1 bg-white rounded"
-                  data={jsonMessage}
-                />
+              <div className="shadow-sm p-3 bg-white rounded">
+                <JSONPretty className="ml-3" data={jsonMessage} />
               </div>
               <Button
                 variant="secondary"
