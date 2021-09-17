@@ -22,7 +22,7 @@ export const CustomNavbar = () => {
                 <Nav.Link className="text-white font-weight-bold">SMP</Nav.Link>
               </Col>
               <Col>
-                <Nav.Link className="text-white" href="/home">
+                <Nav.Link className="text-white" href="/statistics">
                   <IconNameFa.FaChartBar className="mr-2" />
                   Dashboard
                 </Nav.Link>

@@ -18,6 +18,7 @@ import { uploadMessagePage } from './pages/uploadMessagePage/Loadable';
 import { SendMessage } from './pages/sendMessagePage/loadable';
 import { SendJsonMessagePage } from './pages/sendMessagePage/sendJsonMessage';
 import { SendxmlMessagePage } from './pages/sendMessagePage/sendXmlMessage';
+import { StatisticsPage } from './pages/statisticsPage/loadable';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -60,7 +61,7 @@ export function App() {
             path="/send-message/xml"
             component={SendxmlMessagePage}
           />
-
+          <Route exact path="/statistics" component={StatisticsPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>
