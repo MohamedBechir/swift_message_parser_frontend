@@ -10,6 +10,7 @@ import { selectState } from './MessagesList/slice/selectors';
 import React, { useEffect, useState } from 'react';
 import { useFetchMessagesSlice } from './MessagesList/slice';
 import { PaginationComponent } from './Pagination';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 
 export function MessagesPage() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -69,7 +70,38 @@ export function MessagesPage() {
       <div className="mb-5">
         <CustomNavbar />
       </div>
-      <div className="mt-5 d-flex justify-content-center">
+      <div className="row mt-5  d-flex justify-content-center">
+        <Row>
+          <Col xs={4}></Col>
+          <Col xs={4}>
+            <Form.Control className="ml-2" placeholder="Search" />
+          </Col>
+          <Col xs={4}>
+            <div className="dropdown">
+              <Button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenu2"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Items Per Page
+              </Button>
+              <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <Button className="dropdown-item" type="button">
+                  3
+                </Button>
+                <Button className="dropdown-item" type="button">
+                  5
+                </Button>
+                <Button className="dropdown-item" type="button">
+                  10
+                </Button>
+              </div>
+            </div>
+          </Col>
+        </Row>
         <MessagesList messageList={messages.messageGeneralInfoModels} />
       </div>
       <div className="mt-5 justify-content-center">
