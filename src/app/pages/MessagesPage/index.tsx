@@ -7,42 +7,61 @@ import { CustomNavbar } from 'app/components/Navbar';
 import { MessagesList } from './MessagesList';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectState } from './MessagesList/slice/selectors';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFetchMessagesSlice } from './MessagesList/slice';
 import { PaginationComponent } from './Pagination';
 
 export function MessagesPage() {
-  // Initialize current page and page's size
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [showPrev, setShowPrev] = useState(false);
+  const [showNext, setShowNext] = useState(true);
 
   const { actions } = useFetchMessagesSlice();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(actions.requestFetchMessages({ page: '0', size: '2' }));
-  }, [actions, dispatch]);
+    dispatch(
+      actions.requestFetchMessages({ page: currentPage + '', size: '2' }),
+    );
+  }, [actions, currentPage, dispatch]);
   const messages = useSelector(selectState);
   const size = parseInt(messages.totalPages);
 
   const paginate = pageNumber => {
-    setCurrentPage(pageNumber);
-    dispatch(actions.requestFetchMessages({ page: pageNumber, size: '2' }));
+    if (pageNumber === 0) {
+      setShowPrev(false);
+    } else if (pageNumber === size - 1) {
+      setShowNext(false);
+    } else {
+      setShowPrev(true);
+      setCurrentPage(pageNumber);
+      dispatch(actions.requestFetchMessages({ page: pageNumber, size: '2' }));
+    }
   };
 
-  const paginateLast = () => {
-    setCurrentPage(1);
-    dispatch(actions.requestFetchMessages({ page: size - 1 + '', size: '2' }));
-  };
   const paginateNext = () => {
-    setCurrentPage(currentPage + 1);
-    dispatch(
-      actions.requestFetchMessages({ page: currentPage + 1 + '', size: '2' }),
-    );
+    setShowPrev(true);
+    if (currentPage === size - 1) {
+      setShowNext(false);
+    } else {
+      setShowNext(true);
+      setCurrentPage(currentPage + 1);
+      dispatch(
+        actions.requestFetchMessages({ page: currentPage + '', size: '2' }),
+      );
+    }
   };
+
   const paginatePrev = () => {
-    setCurrentPage(currentPage - 1);
-    dispatch(
-      actions.requestFetchMessages({ page: currentPage - 1 + '', size: '2' }),
-    );
+    setShowNext(true);
+    if (currentPage === 0) {
+      setShowPrev(false);
+    } else {
+      setShowPrev(true);
+      setCurrentPage(currentPage - 1);
+      dispatch(
+        actions.requestFetchMessages({ page: currentPage + '', size: '2' }),
+      );
+    }
   };
 
   return (
@@ -59,7 +78,8 @@ export function MessagesPage() {
           paginate={paginate}
           paginatePrev={paginatePrev}
           paginateNext={paginateNext}
-          paginateLast={paginateLast}
+          showPrev={showPrev}
+          showNext={showNext}
         />
       </div>
       <Footer />
