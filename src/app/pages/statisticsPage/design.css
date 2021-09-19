@@ -9,18 +9,7 @@ html, body {
 }
 
 .quarter{
-    width: 50%;
-    height: 100%;
-    float: left;
-}
-
-.half-quarter{
-    width: 50%;
-    height: 100%;
-    float: left;
-}
-
-.contents{
-    height: 50%;
-    width: 100%;
+    width: 35%;
+    height:100%;
+    float:left;
 }
