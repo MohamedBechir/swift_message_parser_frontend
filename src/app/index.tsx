@@ -19,6 +19,7 @@ import { SendMessage } from './pages/sendMessagePage/loadable';
 import { SendJsonMessagePage } from './pages/sendMessagePage/sendJsonMessage';
 import { SendxmlMessagePage } from './pages/sendMessagePage/sendXmlMessage';
 import { StatisticsPage } from './pages/statisticsPage/loadable';
+import { HomePage } from './pages/HomePage/Loadable';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -47,6 +48,7 @@ export function App() {
         </Helmet>
 
         <Switch>
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/messages" component={MessagesPage} />
           <Route exact path="/messages/:id" component={MessagePage} />
           <Route exact path="/upload-file" component={uploadMessagePage} />

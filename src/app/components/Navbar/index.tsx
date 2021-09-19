@@ -19,7 +19,7 @@ export const CustomNavbar = () => {
           <Nav className="min-vw-100">
             <Col className=" col-sm d-flex flex-row">
               <Col>
-                <Nav.Link className="text-white font-weight-bold">SMP</Nav.Link>
+                <Nav.Link href="/" className="text-white font-weight-bold">SMP</Nav.Link>
               </Col>
               <Col>
                 <Nav.Link className="text-white" href="/statistics">
