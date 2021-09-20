@@ -2,10 +2,15 @@ import { useMemo } from 'react';
 import { Button } from 'react-bootstrap';
 import { useDropzone } from 'react-dropzone';
 import { FaFileUpload } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import '../DropArea/design.css';
 import { useFileUploadSlice } from './slice';
+import {
+  selectErrorMessage,
+  selectIsError,
+  selectIsSuccess,
+} from './slice/selectors';
 
 const activeStyle = {
   borderColor: '#2196f3',
@@ -22,6 +27,9 @@ let style;
 
 interface props {
   passFileName: any;
+  passIsSuccess: any;
+  passIsError: any;
+  passErrorMessage: any;
 }
 export function MyDropzone(props: props) {
   const {
@@ -42,6 +50,14 @@ export function MyDropzone(props: props) {
       return dispatch(actions.requestUploadFile({ files: file }));
     });
   }
+  const isSuccess = useSelector(selectIsSuccess);
+  props.passIsSuccess(isSuccess);
+
+  const isError = useSelector(selectIsError);
+  props.passIsError(isError);
+
+  const errorMessage = useSelector(selectErrorMessage);
+  props.passErrorMessage(errorMessage);
 
   style = useMemo(
     () => ({

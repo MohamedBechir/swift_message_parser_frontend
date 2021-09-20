@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Footer } from 'app/components/Footer';
 import { CustomNavbar } from 'app/components/Navbar';
-import { Form } from 'react-bootstrap';
+import { Badge, Form } from 'react-bootstrap';
 import { MyDropzone } from './DropArea';
 
 export function UploadMessageComponenet() {
   const [filenName, setFileName] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setisError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   return (
     <>
@@ -24,9 +27,24 @@ export function UploadMessageComponenet() {
           controlId="exampleForm.ControlTextarea1"
         >
           <Form.Control placeholder={filenName} className="mr-5" readOnly />
+          {isSuccess && (
+            <Badge className="w-50 mt-3" variant="success">
+              Message Uploaded Successfully
+            </Badge>
+          )}
+          {isError && (
+            <Badge className="w-50 mt-3" variant="danger">
+              {errorMessage}
+            </Badge>
+          )}
         </Form.Group>
       </div>
-      <MyDropzone passFileName={setFileName} />
+      <MyDropzone
+        passFileName={setFileName}
+        passIsSuccess={setIsSuccess}
+        passIsError={setisError}
+        passErrorMessage={setErrorMessage}
+      />
       <Footer />
     </>
   );

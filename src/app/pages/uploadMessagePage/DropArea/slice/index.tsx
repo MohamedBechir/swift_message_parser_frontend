@@ -6,14 +6,26 @@ import { FileState } from './types';
 
 export const initialState: FileState = {
   files: [],
+  isSuccess: false,
+  isError: false,
+  errorMessage: '',
 };
 
 const slice = createSlice({
   name: 'upload_file',
   initialState,
   reducers: {
-    requestUploadFile(state, action: PayloadAction<{ files: File }>) {},
-    uploadFileSuccess(state, action: PayloadAction<any>) {},
+    requestUploadFile(state, action: PayloadAction<{ files: File }>) {
+      state.isSuccess = false;
+      state.isError = false;
+    },
+    uploadFileSuccess(state, action: PayloadAction<any>) {
+      state.isSuccess = true;
+    },
+    uploadFileError(state, action: PayloadAction<any>) {
+      state.isError = true;
+      state.errorMessage = 'An error occured, retry please!';
+    },
   },
 });
 

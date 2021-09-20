@@ -14,7 +14,7 @@ export function* uploadFileSaga(action) {
     );
     yield put(actions.uploadFileSuccess(uploadResponse));
   } catch (error) {
-    console.log(error);
+    yield put(actions.uploadFileError(error));
   }
 }
 
