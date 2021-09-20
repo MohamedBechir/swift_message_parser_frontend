@@ -10,7 +10,7 @@ import { selectState } from './MessagesList/slice/selectors';
 import React, { useEffect, useState } from 'react';
 import { useFetchMessagesSlice } from './MessagesList/slice';
 import { PaginationComponent } from './Pagination';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Col, Dropdown, Form, Row } from 'react-bootstrap';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { GiCancel } from 'react-icons/gi';
 
@@ -19,14 +19,15 @@ export function MessagesPage() {
   const [showPrev, setShowPrev] = useState(false);
   const [showNext, setShowNext] = useState(true);
   const [messageType, setMessageType] = useState('');
+  const [pageSize, setPageSize] = useState('2');
 
   const { actions } = useFetchMessagesSlice();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(
-      actions.requestFetchMessages({ page: currentPage + '', size: '2' }),
+      actions.requestFetchMessages({ page: currentPage + '', size: pageSize }),
     );
-  }, [actions, currentPage, dispatch]);
+  }, [actions, currentPage, dispatch, pageSize]);
   const messages = useSelector(selectState);
   const size = parseInt(messages.totalPages);
   /**
@@ -42,7 +43,9 @@ export function MessagesPage() {
     } else {
       setShowPrev(true);
       setCurrentPage(pageNumber);
-      dispatch(actions.requestFetchMessages({ page: pageNumber, size: '2' }));
+      dispatch(
+        actions.requestFetchMessages({ page: pageNumber, size: pageSize }),
+      );
     }
     if (pageNumber === size - 1) {
       setShowNext(false);
@@ -62,7 +65,10 @@ export function MessagesPage() {
       setShowNext(true);
       setCurrentPage(currentPage + 1);
       dispatch(
-        actions.requestFetchMessages({ page: currentPage + '', size: '2' }),
+        actions.requestFetchMessages({
+          page: currentPage + '',
+          size: pageSize,
+        }),
       );
     }
   };
@@ -77,7 +83,7 @@ export function MessagesPage() {
       dispatch(
         actions.requestFetchMessages({
           page: currentPage + '',
-          size: '2',
+          size: pageSize,
         }),
       );
     }
@@ -95,7 +101,7 @@ export function MessagesPage() {
   const cancelSearch = () => {
     setMessageType('');
     dispatch(
-      actions.requestFetchMessages({ page: currentPage + '', size: '2' }),
+      actions.requestFetchMessages({ page: currentPage + '', size: pageSize }),
     );
   };
 
@@ -130,30 +136,27 @@ export function MessagesPage() {
               <AiOutlineSearch />
             </Button>
           </Col>
-          <Col xs={4}>
-            <div className="dropdown">
-              <Button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenu2"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Items Per Page
-              </Button>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <Button className="dropdown-item" type="button">
+          <Col xs={4} className="d-flex">
+            <div className="ml-5 mt-1 mr-3"> Items per page: </div>
+            <Dropdown>
+              <Dropdown.Toggle
+                size="sm"
+                variant="secondary"
+                id="dropdown-basic"
+              ></Dropdown.Toggle>
+
+              <Dropdown.Menu className="w-25">
+                <Dropdown.Item onClick={() => setPageSize('3')}>
                   3
-                </Button>
-                <Button className="dropdown-item" type="button">
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setPageSize('5')}>
                   5
-                </Button>
-                <Button className="dropdown-item" type="button">
-                  10
-                </Button>
-              </div>
-            </div>
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setPageSize('8')}>
+                  8
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </Col>
         </Row>
         <MessagesList messageList={messages.messageGeneralInfoModels} />
