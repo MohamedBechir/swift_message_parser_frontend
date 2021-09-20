@@ -21,4 +21,5 @@ export const XMLMESSAGE_ENDPOINTS = {
 export const STATISTICS_ENDPOINTS = {
   messages_per_type: `http://localhost:8080/messages/statistics/pertype`,
   last_five_messages: `http://localhost:8080/messages/statistics/lastfive`,
+  sent_received: `http://localhost:8080/messages/statistics/sentreceived`,
 };
