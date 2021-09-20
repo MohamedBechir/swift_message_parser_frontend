@@ -39,6 +39,7 @@ export function MyDropzone(props: props) {
     isDragAccept,
     isDragReject,
   } = useDropzone({
+    accept: '.txt',
     onDrop: onDrop,
   });
   const { actions } = useFileUploadSlice();
