@@ -25,10 +25,10 @@ export function SendxmlMessagePage() {
     dispatch(actions.requestFetchXmlMessages());
   }, [actions, dispatch]);
   const xmlMessages = useSelector(selectState);
-
-  /* const sendMessage = id => {
+  xmlMessages.XmlMessages.map(msg => console.log(msg.messageID));
+  const sendMessage = id => {
     dispatch(actions.requestSendMessage({ id: id }));
-  }; */
+  };
 
   return (
     <>
@@ -38,15 +38,22 @@ export function SendxmlMessagePage() {
         <div>
           {xmlMessages.XmlMessages.map(xmlMessage => (
             <>
-              <h2 style={{ color: '#f49d37' }}>MT101: ID2002</h2>
+              <h2 style={{ color: '#f49d37' }}>
+                {' '}
+                MT{xmlMessage.messageType}: ID{xmlMessage.messageID}
+              </h2>
               <div className="shadow-sm p-3 ml-1 bg-white rounded">
                 <XMLViewer
                   className="bechir mt-3"
-                  xml={xmlMessage}
+                  xml={xmlMessage.messages}
                   theme={customTheme}
                 />
               </div>
-              <Button variant="secondary" className="row w-25 mt-2 mb-2 ml-1">
+              <Button
+                variant="secondary"
+                className="row w-25 mt-2 mb-2 ml-1"
+                onClick={() => sendMessage(xmlMessage.messageID)}
+              >
                 Send to Queue
               </Button>
             </>
