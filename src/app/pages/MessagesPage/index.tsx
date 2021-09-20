@@ -103,6 +103,8 @@ export function MessagesPage() {
             <Form.Control
               className="ml-2"
               placeholder="Search"
+              name="messageType"
+              value={messageType}
               onChange={messageTypeChange}
             />
             <Button className="btn-danger" size="sm" onClick={cancelSearch}>
@@ -111,8 +113,6 @@ export function MessagesPage() {
             <Button
               className="btn-secondary"
               size="sm"
-              name="messageType"
-              value={messageType}
               onClick={searchPerMessageType}
             >
               <AiOutlineSearch />
