@@ -4,14 +4,14 @@
 import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PieChart, Pie, Cell, Legend } from 'recharts';
-import { useFetchStatisticsSlice } from './slice';
+import { useFetchMessagesPerTypeSlice } from './slice';
 import { selectState } from './slice/selectors';
 
 export const MyPieChart = memo(() => {
-  const { actions } = useFetchStatisticsSlice();
+  const { actions } = useFetchMessagesPerTypeSlice();
   const dispatch = useDispatch();
-  dispatch(actions.requestFetchStatistics());
-  let statistics = useSelector(selectState);
+  dispatch(actions.requestFetchMessagesPerType());
+  let messagesPerType = useSelector(selectState);
   const COLORS = ['#0088FE', '#00C49F', '#F49D37', '#FF8042', '#fb8585'];
 
   return (
@@ -26,14 +26,14 @@ export const MyPieChart = memo(() => {
           />
           <Pie
             legendType="circle"
-            data={statistics}
+            data={messagesPerType}
             cx="50%"
             cy="50%"
             labelLine={true}
             outerRadius={110}
             dataKey="value"
           >
-            {statistics.map((entry, index) => (
+            {messagesPerType.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}

@@ -1,4 +1,4 @@
-export interface StatisticsState {
+export interface MessagesPerTypeState {
   name: string;
   value: number;
 }

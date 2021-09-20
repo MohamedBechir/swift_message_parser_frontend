@@ -1,20 +1,23 @@
 import { STATISTICS_ENDPOINTS } from 'app/configs/endpoints';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import request from 'utils/request';
-import { FetchStatisticsActions as actions } from '.';
+import { FetchMessagesPerTypeActions as actions } from '.';
 
-export function* fetchStatisticsSaga(action) {
+export function* fetchMessagesPerTypeSaga(action) {
   try {
-    const statistics = yield call(
+    const messagesPerType = yield call(
       request.get,
-      `${STATISTICS_ENDPOINTS.statistics}`,
+      `${STATISTICS_ENDPOINTS.messages_per_type}`,
     );
-    yield put(actions.FetchStatisticsSuccess(statistics));
+    yield put(actions.FetchMessagesPerTypeSuccess(messagesPerType));
   } catch (error) {
     console.log(error);
   }
 }
 
 export function* fetchStatisticsRootState() {
-  yield takeLatest(actions.requestFetchStatistics.type, fetchStatisticsSaga);
+  yield takeLatest(
+    actions.requestFetchMessagesPerType.type,
+    fetchMessagesPerTypeSaga,
+  );
 }
