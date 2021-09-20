@@ -2,17 +2,17 @@
  * Pie Chart Of the received types of messages
  */
 import { memo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { PieChart, Pie, Cell, Legend } from 'recharts';
+import { useFetchStatisticsSlice } from './slice';
+import { selectState } from './slice/selectors';
 
 export const MyPieChart = memo(() => {
-  const data = [
-    { name: 'MT101', value: 400 },
-    { name: 'MT102', value: 300 },
-    { name: 'MT304', value: 300 },
-    { name: 'MT350', value: 200 },
-  ];
-
-  const COLORS = ['#0088FE', '#00C49F', '#F49D37', '#FF8042'];
+  const { actions } = useFetchStatisticsSlice();
+  const dispatch = useDispatch();
+  dispatch(actions.requestFetchStatistics());
+  let statistics = useSelector(selectState);
+  const COLORS = ['#0088FE', '#00C49F', '#F49D37', '#FF8042', '#fb8585'];
 
   return (
     <>
@@ -26,14 +26,14 @@ export const MyPieChart = memo(() => {
           />
           <Pie
             legendType="circle"
-            data={data}
+            data={statistics}
             cx="50%"
             cy="50%"
             labelLine={true}
             outerRadius={110}
             dataKey="value"
           >
-            {data.map((entry, index) => (
+            {statistics.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}

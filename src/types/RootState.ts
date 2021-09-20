@@ -5,6 +5,7 @@ import { MessageDetailsState } from 'app/pages/messagePage/messageDetails/slice/
 import { MessagesState } from 'app/pages/MessagesPage/MessagesList/slice/types';
 import { JsonMessagesState } from 'app/pages/sendMessagePage/sendJsonMessage/slice/types';
 import { XmlMessagesState } from 'app/pages/sendMessagePage/sendXmlMessage/slice/types';
+import { StatisticsState } from 'app/pages/statisticsPage/pieChart/slice/Types';
 import { FileState } from 'app/pages/uploadMessagePage/DropArea/slice/types';
 
 /* 
@@ -19,4 +20,5 @@ export interface RootState {
   upload_file: FileState;
   json_messages: JsonMessagesState;
   xml_messages: XmlMessagesState;
+  statistics: StatisticsState[];
 }

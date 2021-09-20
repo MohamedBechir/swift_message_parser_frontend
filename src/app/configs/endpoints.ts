@@ -17,3 +17,7 @@ export const XMLMESSAGE_ENDPOINTS = {
   xml_messages: `http://localhost:8080/messages/toxml`,
   send_xml_message: `http://localhost:8080/messages/xml/send`,
 };
+
+export const STATISTICS_ENDPOINTS = {
+  statistics: `http://localhost:8080/messages/statistics`,
+};
