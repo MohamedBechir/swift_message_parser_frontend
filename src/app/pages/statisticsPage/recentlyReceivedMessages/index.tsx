@@ -18,7 +18,7 @@ export const MyRecentlyReceived = memo(() => {
       {lastFiveMessage.map(msg => (
         <Card
           bg="Light"
-          className="mb-2 w-25 mt-5 ml-3 mr-3"
+          className="mb-2 w-25 mt-3 ml-3 mr-3"
           style={{ float: 'left' }}
         >
           <Card.Header>MT{msg}</Card.Header>

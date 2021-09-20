@@ -2,22 +2,19 @@
  * Pie Chart Of the received types of messages
  */
 import { memo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { PieChart, Pie, Cell, Legend } from 'recharts';
-import { useFetchMessagesPerTypeSlice } from './slice';
-import { selectState } from './slice/selectors';
 
-export const MyPieChart = memo(() => {
-  const { actions } = useFetchMessagesPerTypeSlice();
-  const dispatch = useDispatch();
-  dispatch(actions.requestFetchMessagesPerType());
-  let messagesPerType = useSelector(selectState);
-  const COLORS = ['#0088FE', '#00C49F', '#F49D37', '#FF8042', '#fb8585'];
+interface props {
+  data: any;
+  COLORS: any;
+  diagramName: string;
+}
 
+export const MyPieChart = memo(({ data, COLORS, diagramName }: props) => {
   return (
     <>
       <div className="col-md-6 half-quarter">
-        <PieChart className="mt-5" width={300} height={290}>
+        <PieChart className="mt-5" width={400} height={290}>
           <Legend
             className="ml-5"
             layout="vertical"
@@ -26,14 +23,14 @@ export const MyPieChart = memo(() => {
           />
           <Pie
             legendType="circle"
-            data={messagesPerType}
+            data={data}
             cx="50%"
             cy="50%"
             labelLine={true}
             outerRadius={110}
             dataKey="value"
           >
-            {messagesPerType.map((entry, index) => (
+            {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
@@ -42,9 +39,7 @@ export const MyPieChart = memo(() => {
           </Pie>
         </PieChart>
       </div>
-      <div className=" ml-3 half-quarter">
-        Diagram: Based On the Most Received Types of Messages
-      </div>
+      <div className=" ml-3 mb-2 half-quarter">{diagramName}</div>
     </>
   );
 });
