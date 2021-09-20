@@ -29,16 +29,28 @@ export function MessagesPage() {
   }, [actions, currentPage, dispatch]);
   const messages = useSelector(selectState);
   const size = parseInt(messages.totalPages);
-
+  /**
+   *
+   * Check this conditions
+   */
   const paginate = pageNumber => {
+    console.log(pageNumber);
     if (pageNumber === 0) {
       setShowPrev(false);
-    } else if (pageNumber === size - 1) {
-      setShowNext(false);
+      setShowNext(true);
+      setCurrentPage(pageNumber);
     } else {
       setShowPrev(true);
       setCurrentPage(pageNumber);
       dispatch(actions.requestFetchMessages({ page: pageNumber, size: '2' }));
+    }
+    if (pageNumber === size - 1) {
+      setShowNext(false);
+      setCurrentPage(pageNumber);
+    }
+    if (pageNumber <= size - 1 && pageNumber >= 0) {
+      setShowNext(true);
+      setCurrentPage(pageNumber);
     }
   };
 
