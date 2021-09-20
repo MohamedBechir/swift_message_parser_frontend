@@ -8,3 +8,18 @@ export const selectState = createSelector(
   [selectSlice],
   JsonMessagesState => JsonMessagesState,
 );
+
+export const selectIsSuccess = createSelector(
+  [selectSlice],
+  JsonMessagesState => JsonMessagesState.isSuccess,
+);
+
+export const selectIsError = createSelector(
+  [selectSlice],
+  JsonMessagesState => JsonMessagesState.isError,
+);
+
+export const selectErrorMessage = createSelector(
+  [selectSlice],
+  JsonMessagesState => JsonMessagesState.errorMessage,
+);
