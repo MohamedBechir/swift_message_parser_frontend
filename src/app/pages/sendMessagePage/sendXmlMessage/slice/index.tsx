@@ -7,6 +7,9 @@ import { XmlMessagesState } from './types';
 export const initialState: XmlMessagesState = {
   XmlMessages: [],
   id: '',
+  isSuccess: false,
+  isError: false,
+  errorMessage: '',
 };
 
 const slice = createSlice({
@@ -22,6 +25,13 @@ const slice = createSlice({
       state.id = action.payload.id;
     },
     sendMessageSuccess(state, action: PayloadAction<any>) {
+      state.isSuccess = true;
+      state.responseMessage = action.payload.responseMessage;
+    },
+    sendMessageError(state, action: PayloadAction<any>) {
+      state.errorMessage =
+        'An error occured, Message not sent, refresh page and retry please';
+      state.isError = true;
       state.responseMessage = action.payload.responseMessage;
     },
   },

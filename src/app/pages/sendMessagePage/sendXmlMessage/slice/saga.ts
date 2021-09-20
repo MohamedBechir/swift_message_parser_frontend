@@ -23,7 +23,7 @@ export function* sendXmlMessagesSaga(action) {
     );
     yield put(actions.sendMessageSuccess(sendingResponse));
   } catch (error) {
-    console.log(error);
+    yield put(actions.sendMessageError(error));
   }
 }
 

@@ -5,10 +5,15 @@
 import { Footer } from 'app/components/Footer';
 import { CustomNavbar } from 'app/components/Navbar';
 import { useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import { Badge, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useFetchXmlMessages } from './slice';
-import { selectState } from './slice/selectors';
+import {
+  selectErrorMessage,
+  selectIsError,
+  selectIsSuccess,
+  selectState,
+} from './slice/selectors';
 import XMLViewer from 'react-xml-viewer';
 import '../sendXmlMessage/design.css';
 
@@ -30,6 +35,10 @@ export function SendxmlMessagePage() {
     dispatch(actions.requestSendMessage({ id: id }));
   };
 
+  const isSuccess = useSelector(selectIsSuccess);
+  const isError = useSelector(selectIsError);
+  const errorMessage = useSelector(selectErrorMessage);
+
   return (
     <>
       <CustomNavbar />
@@ -49,13 +58,27 @@ export function SendxmlMessagePage() {
                   theme={customTheme}
                 />
               </div>
-              <Button
-                variant="secondary"
-                className="row w-25 mt-2 mb-2 ml-1"
-                onClick={() => sendMessage(xmlMessage.messageID)}
-              >
-                Send to Queue
-              </Button>
+              {!isSuccess && (
+                <Button
+                  variant="secondary"
+                  className="row w-25 mt-2 mb-2 ml-1"
+                  onClick={() => sendMessage(xmlMessage.messageID)}
+                >
+                  Send to Queue
+                </Button>
+              )}
+              <div>
+                {isSuccess && (
+                  <Badge className="mt-2" variant="success">
+                    Message Successfully sent To IBM MQ
+                  </Badge>
+                )}
+                {isError && (
+                  <Badge className="mt-2" variant="danger">
+                    {errorMessage}
+                  </Badge>
+                )}
+              </div>
             </>
           ))}
         </div>
