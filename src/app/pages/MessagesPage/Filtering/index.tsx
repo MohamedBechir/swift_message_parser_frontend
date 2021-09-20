@@ -6,6 +6,5 @@ interface props {
 
 export const PaginationComponent = memo(({messageType}: props) => {
   return <>
-  
   </>;
 });

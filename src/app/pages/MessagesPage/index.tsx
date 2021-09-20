@@ -11,11 +11,14 @@ import React, { useEffect, useState } from 'react';
 import { useFetchMessagesSlice } from './MessagesList/slice';
 import { PaginationComponent } from './Pagination';
 import { Button, Col, Form, Row } from 'react-bootstrap';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { GiCancel } from 'react-icons/gi';
 
 export function MessagesPage() {
   const [currentPage, setCurrentPage] = useState(0);
   const [showPrev, setShowPrev] = useState(false);
   const [showNext, setShowNext] = useState(true);
+  const [messageType, setMessageType] = useState('');
 
   const { actions } = useFetchMessagesSlice();
   const dispatch = useDispatch();
@@ -60,9 +63,32 @@ export function MessagesPage() {
       setShowPrev(true);
       setCurrentPage(currentPage - 1);
       dispatch(
-        actions.requestFetchMessages({ page: currentPage + '', size: '2' }),
+        actions.requestFetchMessages({
+          page: currentPage + '',
+          size: '2',
+        }),
       );
     }
+  };
+
+  const searchPerMessageType = () => {
+    console.log(currentPage);
+    dispatch(
+      actions.requestFetchMessagesPerType({
+        messageType: messageType,
+      }),
+    );
+  };
+
+  const cancelSearch = () => {
+    setMessageType('');
+    dispatch(
+      actions.requestFetchMessages({ page: currentPage + '', size: '2' }),
+    );
+  };
+
+  const messageTypeChange = event => {
+    setMessageType(event.target.value);
   };
 
   return (
@@ -73,8 +99,24 @@ export function MessagesPage() {
       <div className="row mt-5  d-flex justify-content-center">
         <Row>
           <Col xs={4}></Col>
-          <Col xs={4}>
-            <Form.Control className="ml-2" placeholder="Search" />
+          <Col xs={4} className="d-flex">
+            <Form.Control
+              className="ml-2"
+              placeholder="Search"
+              onChange={messageTypeChange}
+            />
+            <Button className="btn-danger" size="sm" onClick={cancelSearch}>
+              <GiCancel />
+            </Button>
+            <Button
+              className="btn-secondary"
+              size="sm"
+              name="messageType"
+              value={messageType}
+              onClick={searchPerMessageType}
+            >
+              <AiOutlineSearch />
+            </Button>
           </Col>
           <Col xs={4}>
             <div className="dropdown">

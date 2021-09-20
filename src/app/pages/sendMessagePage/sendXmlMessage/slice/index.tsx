@@ -15,7 +15,6 @@ const slice = createSlice({
   reducers: {
     requestFetchXmlMessages() {},
     fetchXmlMessageSuccess(state, action: PayloadAction<any>) {
-      console.log(action.payload);
       state.XmlMessages = action.payload;
     },
     requestSendMessage(state, action: PayloadAction<{ id: string }>) {

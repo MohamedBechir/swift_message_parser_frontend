@@ -1,5 +1,5 @@
 export const MESSAGE_ENDPOINTS = {
-  messages: `http://localhost:8080/messages/decomposedMessages`,
+  messages: `http://localhost:8080/messages/decomposedMessage`,
   message: `http://localhost:8080/messages`,
   message_details: `http://localhost:8080/messages/decomposedMessages`,
 };

@@ -5,4 +5,5 @@ export interface MessagesState {
   page: string;
   size: string;
   totalPages: string;
+  messageType: string;
 }

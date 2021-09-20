@@ -1,5 +1,5 @@
 import { MESSAGE_ENDPOINTS } from 'app/configs/endpoints';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 import request from 'utils/request';
 import { fetchMessagesActions as actions } from '.';
 
@@ -16,6 +16,24 @@ export function* fetchMessagesSaga(action) {
   }
 }
 
+export function* fetchMessagesPerTypeSaga(action) {
+  try {
+    const messagesPerType = yield call(
+      request.get,
+      MESSAGE_ENDPOINTS.messages + `/${action.payload.messageType}`,
+    );
+    yield put(actions.FetchMessagesSuccessPerType(messagesPerType));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export function* fetchMessagesRootState() {
-  yield takeLatest(actions.requestFetchMessages.type, fetchMessagesSaga);
+  yield all([
+    takeLatest(actions.requestFetchMessages.type, fetchMessagesSaga),
+    takeLatest(
+      actions.requestFetchMessagesPerType.type,
+      fetchMessagesPerTypeSaga,
+    ),
+  ]);
 }
