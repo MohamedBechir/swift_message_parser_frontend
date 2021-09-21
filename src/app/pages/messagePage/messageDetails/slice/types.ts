@@ -4,6 +4,7 @@ export interface MessageDetailsState {
   block2: Block2;
   tagBlock: TagBlock[];
   messageId?: string;
+  sentJson: boolean;
 }
 
 export interface Block1 {

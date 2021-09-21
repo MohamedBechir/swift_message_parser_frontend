@@ -17,7 +17,6 @@ const slice = createSlice({
   reducers: {
     requestFetchMessagesPerType(state) {},
     FetchMessagesPerTypeSuccess(state, action: PayloadAction<any>) {
-      console.log(action.payload);
       state = action.payload;
       return state;
     },

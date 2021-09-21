@@ -25,7 +25,7 @@ const slice = createSlice({
     },
     sendMessageSuccess(state, action: PayloadAction<any>) {
       state.isSuccess = true;
-      state.responseMessage = action.payload.responseMessage;
+      return state;
     },
     sendMessageError(state, action: PayloadAction<any>) {
       state.errorMessage =

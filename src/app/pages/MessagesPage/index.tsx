@@ -35,7 +35,6 @@ export function MessagesPage() {
    * Check this conditions
    */
   const paginate = pageNumber => {
-    console.log(pageNumber);
     if (pageNumber === 0) {
       setShowPrev(false);
       setShowNext(true);
@@ -90,7 +89,6 @@ export function MessagesPage() {
   };
 
   const searchPerMessageType = () => {
-    console.log(currentPage);
     dispatch(
       actions.requestFetchMessagesPerType({
         messageType: messageType,

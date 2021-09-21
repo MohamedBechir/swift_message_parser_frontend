@@ -12,7 +12,6 @@ const slice = createSlice({
   reducers: {
     requestFetchLastFiveMessages(state) {},
     FetchLastFiveMessagesSuccess(state, action: PayloadAction<any>) {
-      console.log(action.payload);
       state = action.payload;
       return state;
     },

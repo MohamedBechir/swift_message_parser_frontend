@@ -6,6 +6,7 @@ import { MessageDetailsState } from './types';
 
 export const initialState: MessageDetailsState = {
   id: '',
+  sentJson: false,
   block1: {
     applicationId: '',
     logicalTerminal: '',
@@ -37,6 +38,7 @@ const slice = createSlice({
       state.block1 = action.payload.block1;
       state.block2 = action.payload.block2;
       state.tagBlock = action.payload.tagBlock;
+      state.sentJson = false;
       return state;
     },
   },

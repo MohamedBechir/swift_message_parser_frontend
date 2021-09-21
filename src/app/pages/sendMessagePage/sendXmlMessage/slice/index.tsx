@@ -18,8 +18,8 @@ const slice = createSlice({
   reducers: {
     requestFetchXmlMessages() {},
     fetchXmlMessageSuccess(state, action: PayloadAction<any>) {
-      console.log(action.payload);
       state.XmlMessages = action.payload;
+      return state;
     },
     requestSendMessage(state, action: PayloadAction<{ id: string }>) {
       state.id = action.payload.id;
@@ -27,6 +27,7 @@ const slice = createSlice({
     sendMessageSuccess(state, action: PayloadAction<any>) {
       state.isSuccess = true;
       state.responseMessage = action.payload.responseMessage;
+      return state;
     },
     sendMessageError(state, action: PayloadAction<any>) {
       state.errorMessage =

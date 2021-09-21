@@ -28,15 +28,13 @@ export function SendJsonMessagePage() {
   const sendMessage = id => {
     dispatch(actions.requestSendMessage({ id: id }));
   };
-
   const isSuccess = useSelector(selectIsSuccess);
   const isError = useSelector(selectIsError);
   const errorMessage = useSelector(selectErrorMessage);
-
   return (
     <>
       <CustomNavbar />
-      <div className="row mr-5 ml-5">
+      <div className="row mr-5 ml-5" style={{ overflow: 'scroll' }}>
         <h3>JSON Files To Send:</h3>
         <div>
           {jsonMessages.jsonMessages.map(jsonMessage => (
@@ -44,13 +42,28 @@ export function SendJsonMessagePage() {
               <h2 style={{ color: '#f49d37' }}>
                 MT{jsonMessage.block2.messageType}: ID{jsonMessage?.messageId}
               </h2>
-              <div className="shadow-sm p-3 bg-white rounded">
+              <div className="shadow-sm p-3  mb-5 bg-white rounded">
                 <JSONPretty className="ml-3" data={jsonMessage} />
+                {jsonMessage.sentJson ? (
+                  <div
+                    className="shadow-sm p-1 rounded ml-3"
+                    style={{ backgroundColor: '#9FE2BF', width: '10%' }}
+                  >
+                    <h5>Message Sent</h5>
+                  </div>
+                ) : (
+                  <div
+                    className="shadow-sm p-1 rounded ml-3"
+                    style={{ backgroundColor: '#FA8072', width: '10%' }}
+                  >
+                    <h5>Message Received</h5>
+                  </div>
+                )}
               </div>
-              {!isSuccess && (
+              {!jsonMessage.sentJson && (
                 <Button
                   variant="secondary"
-                  className="row w-25 mt-2 mb-2 ml-1"
+                  className="row w-25 mt-2 mb-4 ml-1"
                   onClick={() => sendMessage(jsonMessage.messageId)}
                 >
                   Send to Queue
@@ -58,12 +71,12 @@ export function SendJsonMessagePage() {
               )}
               <div>
                 {isSuccess && (
-                  <Badge className="mt-2" variant="success">
+                  <Badge className="mt-2 mb-3" variant="success">
                     Message Successfully sent To IBM MQ
                   </Badge>
                 )}
                 {isError && (
-                  <Badge className="mt-2" variant="danger">
+                  <Badge className="mt-2 mb-3" variant="danger">
                     {errorMessage}
                   </Badge>
                 )}

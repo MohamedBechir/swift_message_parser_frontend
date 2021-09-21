@@ -11,4 +11,5 @@ export interface XMLMessage {
   messages: string;
   messageID: string;
   messageType: string;
+  sentXml: boolean;
 }

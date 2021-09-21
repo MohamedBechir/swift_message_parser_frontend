@@ -35,6 +35,8 @@ export function SendxmlMessagePage() {
     dispatch(actions.requestSendMessage({ id: id }));
   };
 
+  console.log(xmlMessages);
+
   const isSuccess = useSelector(selectIsSuccess);
   const isError = useSelector(selectIsError);
   const errorMessage = useSelector(selectErrorMessage);
@@ -57,8 +59,23 @@ export function SendxmlMessagePage() {
                   xml={xmlMessage.messages}
                   theme={customTheme}
                 />
+                {xmlMessage.sentXml ? (
+                  <div
+                    className="shadow-sm p-1 rounded ml-3"
+                    style={{ backgroundColor: '#9FE2BF', width: '10%' }}
+                  >
+                    <h5>Message Sent</h5>
+                  </div>
+                ) : (
+                  <div
+                    className="shadow-sm p-1 rounded ml-3"
+                    style={{ backgroundColor: '#FA8072', width: '10%' }}
+                  >
+                    <h5>Message Received</h5>
+                  </div>
+                )}
               </div>
-              {!isSuccess && (
+              {!xmlMessage.sentXml && (
                 <Button
                   variant="secondary"
                   className="row w-25 mt-2 mb-2 ml-1"
