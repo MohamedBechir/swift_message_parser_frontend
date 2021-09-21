@@ -4,7 +4,7 @@ import styled from 'styled-components';
 interface Props {}
 
 export const Footer = memo((props: Props) => {
-  return <CustomFooter></CustomFooter>;
+  return <CustomFooter className="mt-3"></CustomFooter>;
 });
 
 const CustomFooter = styled.footer`

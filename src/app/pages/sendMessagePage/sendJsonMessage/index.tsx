@@ -28,6 +28,7 @@ export function SendJsonMessagePage() {
   const sendMessage = id => {
     dispatch(actions.requestSendMessage({ id: id }));
   };
+  console.log(jsonMessages);
   const isSuccess = useSelector(selectIsSuccess);
   const isError = useSelector(selectIsError);
   const errorMessage = useSelector(selectErrorMessage);
@@ -42,19 +43,19 @@ export function SendJsonMessagePage() {
               <h2 style={{ color: '#f49d37' }}>
                 MT{jsonMessage.block2.messageType}: ID{jsonMessage?.messageId}
               </h2>
-              <div className="shadow-sm p-3  mb-5 bg-white rounded">
+              <div className="shadow-sm p-3  mb-3 bg-white rounded">
                 <JSONPretty className="ml-3" data={jsonMessage} />
                 {jsonMessage.sentJson ? (
                   <div
                     className="shadow-sm p-1 rounded ml-3"
-                    style={{ backgroundColor: '#9FE2BF', width: '10%' }}
+                    style={{ backgroundColor: '#9FE2BF', width: '8%' }}
                   >
                     <h5>Message Sent</h5>
                   </div>
                 ) : (
                   <div
                     className="shadow-sm p-1 rounded ml-3"
-                    style={{ backgroundColor: '#FA8072', width: '10%' }}
+                    style={{ backgroundColor: '#FA8072', width: '8%' }}
                   >
                     <h5>Message Received</h5>
                   </div>
@@ -71,12 +72,21 @@ export function SendJsonMessagePage() {
               )}
               <div>
                 {isSuccess && (
-                  <Badge className="mt-2 mb-3" variant="success">
-                    Message Successfully sent To IBM MQ
+                  <Badge
+                    className=" mb-3"
+                    style={{ fontSize: '110%' }}
+                    variant="success"
+                  >
+                    Message Successfully sent To IBM MQ, refresh the page to see
+                    it!
                   </Badge>
                 )}
                 {isError && (
-                  <Badge className="mt-2 mb-3" variant="danger">
+                  <Badge
+                    className="mb-3"
+                    style={{ fontSize: '110%' }}
+                    variant="danger"
+                  >
                     {errorMessage}
                   </Badge>
                 )}

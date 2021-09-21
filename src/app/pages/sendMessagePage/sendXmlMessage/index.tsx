@@ -44,7 +44,7 @@ export function SendxmlMessagePage() {
   return (
     <>
       <CustomNavbar />
-      <div className="row mr-5 ml-5">
+      <div className="row mr-5 ml-5 style={{ overflow: 'scroll' }}">
         <h3>XML Files To Send:</h3>
         <div>
           {xmlMessages.XmlMessages.map(xmlMessage => (
@@ -53,23 +53,23 @@ export function SendxmlMessagePage() {
                 {' '}
                 MT{xmlMessage.messageType}: ID{xmlMessage.messageID}
               </h2>
-              <div className="shadow-sm p-3 ml-1 bg-white rounded">
+              <div className="shadow-sm p-3 mb-4 bg-white rounded">
                 <XMLViewer
-                  className="bechir mt-3"
+                  className="bechir mt-3 mb-2"
                   xml={xmlMessage.messages}
                   theme={customTheme}
                 />
                 {xmlMessage.sentXml ? (
                   <div
-                    className="shadow-sm p-1 rounded ml-3"
-                    style={{ backgroundColor: '#9FE2BF', width: '10%' }}
+                    className="shadow-sm p-1 rounded "
+                    style={{ backgroundColor: '#9FE2BF', width: '8%' }}
                   >
                     <h5>Message Sent</h5>
                   </div>
                 ) : (
                   <div
-                    className="shadow-sm p-1 rounded ml-3"
-                    style={{ backgroundColor: '#FA8072', width: '10%' }}
+                    className="shadow-sm p-1 rounded "
+                    style={{ backgroundColor: '#FA8072', width: '8%' }}
                   >
                     <h5>Message Received</h5>
                   </div>
@@ -78,7 +78,7 @@ export function SendxmlMessagePage() {
               {!xmlMessage.sentXml && (
                 <Button
                   variant="secondary"
-                  className="row w-25 mt-2 mb-2 ml-1"
+                  className="row w-25 mt-2 mb-4 ml-1"
                   onClick={() => sendMessage(xmlMessage.messageID)}
                 >
                   Send to Queue
@@ -86,12 +86,21 @@ export function SendxmlMessagePage() {
               )}
               <div>
                 {isSuccess && (
-                  <Badge className="mt-2" variant="success">
-                    Message Successfully sent To IBM MQ
+                  <Badge
+                    className="mb-3"
+                    style={{ fontSize: '110%' }}
+                    variant="success"
+                  >
+                    Message Successfully sent To IBM MQ, refresh the page to see
+                    it!
                   </Badge>
                 )}
                 {isError && (
-                  <Badge className="mt-2" variant="danger">
+                  <Badge
+                    className="mb-3"
+                    style={{ fontSize: '110%' }}
+                    variant="danger"
+                  >
                     {errorMessage}
                   </Badge>
                 )}
