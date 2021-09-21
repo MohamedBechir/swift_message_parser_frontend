@@ -15,6 +15,7 @@ export function StatisticsPage() {
   const dispatch = useDispatch();
   dispatch(actions.requestFetchMessagesPerType());
   let messagesPerType = useSelector(selectState);
+  
 
   const { sentreceivedactions } = useFetchSentReceivedSlice();
   const sentreceiveddispatch = useDispatch();

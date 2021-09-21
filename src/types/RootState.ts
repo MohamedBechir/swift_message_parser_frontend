@@ -7,6 +7,7 @@ import { JsonMessagesState } from 'app/pages/sendMessagePage/sendJsonMessage/sli
 import { XmlMessagesState } from 'app/pages/sendMessagePage/sendXmlMessage/slice/types';
 import { MessagesPerTypeState } from 'app/pages/statisticsPage/pieChart/slice/Types';
 import { LastFiveMessagesState } from 'app/pages/statisticsPage/recentlyReceivedMessages/slice/types';
+import { SentReceivedState } from 'app/pages/statisticsPage/sentReceived/slice/types';
 import { FileState } from 'app/pages/uploadMessagePage/DropArea/slice/types';
 
 /* 
@@ -23,4 +24,5 @@ export interface RootState {
   xml_messages: XmlMessagesState;
   messages_per_type: MessagesPerTypeState[];
   last_five_messages: LastFiveMessagesState[];
+  sent_received: SentReceivedState[];
 }

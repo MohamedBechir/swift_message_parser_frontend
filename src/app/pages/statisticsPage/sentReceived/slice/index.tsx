@@ -1,10 +1,10 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from 'utils/@reduxjs/toolkit';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
-import { MessagesPerTypeState } from '../../pieChart/slice/Types';
 import { fetchStatisticsRootState } from './saga';
+import { SentReceivedState } from './types';
 
-export const initialState: MessagesPerTypeState[] = [
+export const initialState: SentReceivedState[] = [
   {
     name: '',
     value: 0,
@@ -12,7 +12,7 @@ export const initialState: MessagesPerTypeState[] = [
 ];
 
 const slice = createSlice({
-  name: 'messages_per_type',
+  name: 'sent_received',
   initialState,
   reducers: {
     requestFetchSentReceived(state) {},
