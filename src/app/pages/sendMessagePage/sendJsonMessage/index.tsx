@@ -55,7 +55,7 @@ export function SendJsonMessagePage() {
                 ) : (
                   <div
                     className="shadow-sm p-1 rounded ml-3"
-                    style={{ backgroundColor: '#FA8072', width: '8%' }}
+                    style={{ backgroundColor: '#FA8072', width: '9%' }}
                   >
                     <h5>Message Received</h5>
                   </div>

@@ -69,7 +69,7 @@ export function SendxmlMessagePage() {
                 ) : (
                   <div
                     className="shadow-sm p-1 rounded "
-                    style={{ backgroundColor: '#FA8072', width: '8%' }}
+                    style={{ backgroundColor: '#FA8072', width: '9%' }}
                   >
                     <h5>Message Received</h5>
                   </div>
