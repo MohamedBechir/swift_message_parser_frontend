@@ -8,18 +8,11 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './router';
 
-import { MessagesPage } from './pages/MessagesPage/Loadable';
-import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
-import { MessagePage } from './pages/messagePage';
-import { uploadMessagePage } from './pages/uploadMessagePage/Loadable';
-import { SendMessage } from './pages/sendMessagePage/loadable';
-import { SendJsonMessagePage } from './pages/sendMessagePage/sendJsonMessage';
-import { SendxmlMessagePage } from './pages/sendMessagePage/sendXmlMessage';
-import { StatisticsPage } from './pages/statisticsPage/loadable';
-import { HomePage } from './pages/HomePage/Loadable';
+import Page from './page';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -46,26 +39,7 @@ export function App() {
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
           />
         </Helmet>
-
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/messages" component={MessagesPage} />
-          <Route exact path="/messages/:id" component={MessagePage} />
-          <Route exact path="/upload-file" component={uploadMessagePage} />
-          <Route exact path="/send-message" component={SendMessage} />
-          <Route
-            exact
-            path="/send-message/json"
-            component={SendJsonMessagePage}
-          />
-          <Route
-            exact
-            path="/send-message/xml"
-            component={SendxmlMessagePage}
-          />
-          <Route exact path="/statistics" component={StatisticsPage} />
-          <Route component={NotFoundPage} />
-        </Switch>
+        <Router>{content => <Page>{content}</Page>}</Router>
       </BrowserRouter>
     </>
   );
