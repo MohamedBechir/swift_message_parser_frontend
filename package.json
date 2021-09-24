@@ -40,6 +40,7 @@
     "lint-staged": "10.3.0",
     "material-ui-dropzone": "3.5.0",
     "netlify": "8.0.1",
+    "netlify-cli": "6.9.15",
     "node-plop": "0.26.2",
     "plop": "2.7.4",
     "prettier": "2.3.2",
