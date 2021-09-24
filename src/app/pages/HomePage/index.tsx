@@ -1,6 +1,5 @@
 import { Footer } from 'app/components/Footer';
 import { CustomNavbar } from 'app/components/Navbar';
-import { Link } from 'react-router-dom';
 
 export function HomePage() {
   return (
@@ -13,7 +12,6 @@ export function HomePage() {
         >
           Welcome to Swift Message Parser:
         </h1>
-        <Link to="/statistics"> GO there</Link>
         <h2 className="text-center mt-5">
           Thanks to this Web Application you will be able to send and receive
           SWIFT messages from and to other Microservices.
